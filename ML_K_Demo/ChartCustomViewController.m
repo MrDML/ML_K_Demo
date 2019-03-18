@@ -13,6 +13,8 @@
 #import "MLTextLayer.h"
 #import "MLShapeLayer.h"
 #import "Section.h"
+#import "ChartAlgorithm.h"
+#import "MLChartAlgorithm.h"
 #define Navigation_Heigth [UIApplication sharedApplication].statusBarFrame.size.height + 44
 #define TOPVIEW_Height 60
 #define TOOLBAR_Height 64
@@ -21,7 +23,7 @@
 @property (nonatomic, strong)LineChartView *chartView;
 @property (nonatomic, strong)TickerTopView *topView;
 @property (nonatomic, strong)ToolBarView   *toolbar;
-
+@property (nonatomic, strong) ChartAlgorithm *algorithm;
 
 
 
@@ -34,8 +36,10 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self addSubViews];
- 
-
+// 
+//    self.algorithm = [[MLChartAlgorithm alloc] init];
+//    
+//    [self.algorithm handleAlgorithm:nil];
 
 }
 

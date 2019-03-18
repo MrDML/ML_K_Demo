@@ -44,7 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  当前区是否隐藏
  */
-@property (nonatomic, assign) BOOL hiddent;
+@property (nonatomic, assign) BOOL hidden;
 
 
 

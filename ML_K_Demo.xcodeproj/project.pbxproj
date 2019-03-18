@@ -23,6 +23,10 @@
 		0EA588C0223E6FD800080EA8 /* MLShapeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA588BF223E6FD800080EA8 /* MLShapeLayer.m */; };
 		0EA588C3223E700900080EA8 /* MLTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA588C2223E700900080EA8 /* MLTextLayer.m */; };
 		0EA588C6223E725E00080EA8 /* Section.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA588C5223E725E00080EA8 /* Section.m */; };
+		488A3E66223F656C0019EBD4 /* UIView+MLExtesionFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 488A3E65223F656C0019EBD4 /* UIView+MLExtesionFrame.m */; };
+		488A3E69223F7F440019EBD4 /* ChartItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 488A3E68223F7F440019EBD4 /* ChartItem.m */; };
+		488A3E6C223F962D0019EBD4 /* ChartAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 488A3E6B223F962D0019EBD4 /* ChartAlgorithm.m */; };
+		488A3E75223F9E270019EBD4 /* MLChartAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 488A3E74223F9E270019EBD4 /* MLChartAlgorithm.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +79,15 @@
 		0EA588C2223E700900080EA8 /* MLTextLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLTextLayer.m; sourceTree = "<group>"; };
 		0EA588C4223E725E00080EA8 /* Section.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Section.h; sourceTree = "<group>"; };
 		0EA588C5223E725E00080EA8 /* Section.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Section.m; sourceTree = "<group>"; };
+		488A3E64223F656C0019EBD4 /* UIView+MLExtesionFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+MLExtesionFrame.h"; sourceTree = "<group>"; };
+		488A3E65223F656C0019EBD4 /* UIView+MLExtesionFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MLExtesionFrame.m"; sourceTree = "<group>"; };
+		488A3E67223F7F440019EBD4 /* ChartItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChartItem.h; sourceTree = "<group>"; };
+		488A3E68223F7F440019EBD4 /* ChartItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChartItem.m; sourceTree = "<group>"; };
+		488A3E6A223F962D0019EBD4 /* ChartAlgorithm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChartAlgorithm.h; sourceTree = "<group>"; };
+		488A3E6B223F962D0019EBD4 /* ChartAlgorithm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChartAlgorithm.m; sourceTree = "<group>"; };
+		488A3E6D223F96BB0019EBD4 /* ChartAlgorithmProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChartAlgorithmProtocol.h; sourceTree = "<group>"; };
+		488A3E73223F9E270019EBD4 /* MLChartAlgorithm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLChartAlgorithm.h; sourceTree = "<group>"; };
+		488A3E74223F9E270019EBD4 /* MLChartAlgorithm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLChartAlgorithm.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +163,15 @@
 				0EA588C2223E700900080EA8 /* MLTextLayer.m */,
 				0EA588C4223E725E00080EA8 /* Section.h */,
 				0EA588C5223E725E00080EA8 /* Section.m */,
+				488A3E64223F656C0019EBD4 /* UIView+MLExtesionFrame.h */,
+				488A3E65223F656C0019EBD4 /* UIView+MLExtesionFrame.m */,
+				488A3E67223F7F440019EBD4 /* ChartItem.h */,
+				488A3E68223F7F440019EBD4 /* ChartItem.m */,
+				488A3E6A223F962D0019EBD4 /* ChartAlgorithm.h */,
+				488A3E6B223F962D0019EBD4 /* ChartAlgorithm.m */,
+				488A3E6D223F96BB0019EBD4 /* ChartAlgorithmProtocol.h */,
+				488A3E73223F9E270019EBD4 /* MLChartAlgorithm.h */,
+				488A3E74223F9E270019EBD4 /* MLChartAlgorithm.m */,
 			);
 			path = ML_K_Demo;
 			sourceTree = "<group>";
@@ -304,13 +326,17 @@
 			files = (
 				0EA58882223E285100080EA8 /* ViewController.m in Sources */,
 				0EA5888D223E285900080EA8 /* main.m in Sources */,
+				488A3E69223F7F440019EBD4 /* ChartItem.m in Sources */,
 				0EA588BA223E337F00080EA8 /* LineChartView.m in Sources */,
 				0EA588C3223E700900080EA8 /* MLTextLayer.m in Sources */,
 				0EA588B7223E333900080EA8 /* TickerTopView.m in Sources */,
+				488A3E6C223F962D0019EBD4 /* ChartAlgorithm.m in Sources */,
 				0EA588B4223E314400080EA8 /* ChartCustomViewController.m in Sources */,
+				488A3E66223F656C0019EBD4 /* UIView+MLExtesionFrame.m in Sources */,
 				0EA588C0223E6FD800080EA8 /* MLShapeLayer.m in Sources */,
 				0EA5887F223E285100080EA8 /* AppDelegate.m in Sources */,
 				0EA588C6223E725E00080EA8 /* Section.m in Sources */,
+				488A3E75223F9E270019EBD4 /* MLChartAlgorithm.m in Sources */,
 				0EA588BD223E341300080EA8 /* ToolBarView.m in Sources */,
 				0EA588B1223E2F5800080EA8 /* MainViewController.m in Sources */,
 			);
