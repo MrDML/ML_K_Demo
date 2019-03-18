@@ -36,10 +36,13 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self addSubViews];
-// 
-//    self.algorithm = [[MLChartAlgorithm alloc] init];
-//    
-//    [self.algorithm handleAlgorithm:nil];
+
+    
+    
+    self.algorithm = [[MLChartAlgorithm alloc] initWithMACD:@(10),@(20),@(30),nil];
+    self.algorithm = [[MLChartAlgorithm alloc] initWithKDJ:@(10),@(20),@(30), nil];
+    self.algorithm = [[MLChartAlgorithm alloc] initWithSAR:@(10),@(15),@(20), nil];
+   
 
 }
 

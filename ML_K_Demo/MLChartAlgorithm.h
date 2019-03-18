@@ -25,14 +25,81 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MLChartAlgorithm : ChartAlgorithm
 
-
 - (instancetype)init;
+/**
+ 时分
 
+ @return return value description
+ */
 - (instancetype)initWithTimeLine;
 
-- (instancetype)initWithema:(int)value;
+/**
+ 简单移动平均数
 
-@property (nonatomic, strong) NSMutableArray *extVals;
+ @param value value description
+ @return return value description
+ */
+- (instancetype)initWithMA:(NSNumber *)value;
+
+/**
+ 指数移动平均数
+
+ @param value value description
+ @return return value description
+ */
+- (instancetype)initWithEMA:(NSNumber *)value;
+
+/**
+ 随机指标 KDJ 初始化 ps:(三个参数)
+
+ @param values 三个参数
+ @return return value description
+ */
+- (instancetype)initWithKDJ:(NSNumber *)values, ... NS_REQUIRES_NIL_TERMINATION;
+
+/**
+ 指数平滑异同平均线 MACD 初始化 ps:(三个参数)
+
+ @param values 三个参数
+ @return return value description
+ */
+- (instancetype)initWithMACD:(NSNumber *)values, ... NS_REQUIRES_NIL_TERMINATION;
+
+/**
+  布林线 Bool 初始化 ps:(两个参数)
+
+ @param values 两个参数
+ @return return value description
+ */
+- (instancetype)initWithBool:(NSNumber *)values, ... NS_REQUIRES_NIL_TERMINATION;
+
+/**
+ 停损转向操作点指标(判定周期，加速因子初值，加速因子最大值) ps:(三个参数)
+
+ @param values 三个参数
+ @return return value description
+ */
+- (instancetype)initWithSAR:(NSNumber *)values, ... NS_REQUIRES_NIL_TERMINATION;
+
+/**
+ SAM指标公式
+
+ @return return value description
+ */
+- (instancetype)initWithSAM:(NSNumber *)value;
+
+/**
+ RSI指标公式
+
+ @return return value description
+ */
+- (instancetype)initWithRSI:(NSNumber *)value;
+
+
+/**
+ 类型
+ */
+@property (nonatomic, assign, readonly) ChartAlgorithmType type;
 
 @end
 
