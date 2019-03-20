@@ -13,8 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol ChartAlgorithmProtocol <NSObject>
 
 @required
-- (ChartItem *)handleAlgorithm:(NSArray<ChartItem *>*)datas;
-
+- (NSArray<ChartItem *> *)handleAlgorithm:(NSArray<ChartItem *>*)datas;
 @end
 
 NS_ASSUME_NONNULL_END

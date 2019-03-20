@@ -23,7 +23,8 @@ userInfo:nil]
     return self;
 }
 
-- (ChartItem *)handleAlgorithm:(NSArray<ChartItem *> *)datas
+
+- (NSArray<ChartItem *> *)handleAlgorithm:(NSArray<ChartItem *> *)datas
 {
     AbstractMethodNotImplemented();
 }

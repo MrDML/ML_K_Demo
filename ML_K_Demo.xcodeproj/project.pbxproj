@@ -28,6 +28,12 @@
 		488A3E69223F7F440019EBD4 /* ChartItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 488A3E68223F7F440019EBD4 /* ChartItem.m */; };
 		488A3E6C223F962D0019EBD4 /* ChartAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 488A3E6B223F962D0019EBD4 /* ChartAlgorithm.m */; };
 		488A3E75223F9E270019EBD4 /* MLChartAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 488A3E74223F9E270019EBD4 /* MLChartAlgorithm.m */; };
+		48A240E722422D4100E92BB9 /* MA-EMA-MACD介绍.md in Resources */ = {isa = PBXBuildFile; fileRef = 48A240E122422D4100E92BB9 /* MA-EMA-MACD介绍.md */; };
+		48A240E822422D4100E92BB9 /* 01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 48A240E222422D4100E92BB9 /* 01.jpg */; };
+		48A240E922422D4100E92BB9 /* 03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 48A240E322422D4100E92BB9 /* 03.jpg */; };
+		48A240EA22422D4100E92BB9 /* 02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 48A240E422422D4100E92BB9 /* 02.jpg */; };
+		48A240EB22422D4100E92BB9 /* 指标公式.md in Resources */ = {isa = PBXBuildFile; fileRef = 48A240E522422D4100E92BB9 /* 指标公式.md */; };
+		48A240EC22422D4100E92BB9 /* KDJ介绍.md in Resources */ = {isa = PBXBuildFile; fileRef = 48A240E622422D4100E92BB9 /* KDJ介绍.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +97,12 @@
 		488A3E6D223F96BB0019EBD4 /* ChartAlgorithmProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChartAlgorithmProtocol.h; sourceTree = "<group>"; };
 		488A3E73223F9E270019EBD4 /* MLChartAlgorithm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLChartAlgorithm.h; sourceTree = "<group>"; };
 		488A3E74223F9E270019EBD4 /* MLChartAlgorithm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLChartAlgorithm.m; sourceTree = "<group>"; };
+		48A240E122422D4100E92BB9 /* MA-EMA-MACD介绍.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "MA-EMA-MACD介绍.md"; sourceTree = "<group>"; };
+		48A240E222422D4100E92BB9 /* 01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 01.jpg; sourceTree = "<group>"; };
+		48A240E322422D4100E92BB9 /* 03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 03.jpg; sourceTree = "<group>"; };
+		48A240E422422D4100E92BB9 /* 02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 02.jpg; sourceTree = "<group>"; };
+		48A240E522422D4100E92BB9 /* 指标公式.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "指标公式.md"; sourceTree = "<group>"; };
+		48A240E622422D4100E92BB9 /* KDJ介绍.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "KDJ介绍.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +133,7 @@
 		0EA58871223E285100080EA8 = {
 			isa = PBXGroup;
 			children = (
+				48A240E022422D4100E92BB9 /* Resource */,
 				0EA5887C223E285100080EA8 /* ML_K_Demo */,
 				0EA58895223E285A00080EA8 /* ML_K_DemoTests */,
 				0EA588A0223E285A00080EA8 /* ML_K_DemoUITests */,
@@ -197,6 +210,19 @@
 				0EA588A3223E285A00080EA8 /* Info.plist */,
 			);
 			path = ML_K_DemoUITests;
+			sourceTree = "<group>";
+		};
+		48A240E022422D4100E92BB9 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				48A240E122422D4100E92BB9 /* MA-EMA-MACD介绍.md */,
+				48A240E222422D4100E92BB9 /* 01.jpg */,
+				48A240E322422D4100E92BB9 /* 03.jpg */,
+				48A240E422422D4100E92BB9 /* 02.jpg */,
+				48A240E522422D4100E92BB9 /* 指标公式.md */,
+				48A240E622422D4100E92BB9 /* KDJ介绍.md */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,9 +328,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48A240E922422D4100E92BB9 /* 03.jpg in Resources */,
+				48A240EC22422D4100E92BB9 /* KDJ介绍.md in Resources */,
+				48A240E822422D4100E92BB9 /* 01.jpg in Resources */,
 				0EA5888A223E285900080EA8 /* LaunchScreen.storyboard in Resources */,
+				48A240EA22422D4100E92BB9 /* 02.jpg in Resources */,
 				0EA58887223E285900080EA8 /* Assets.xcassets in Resources */,
 				0EA58885223E285100080EA8 /* Main.storyboard in Resources */,
+				48A240E722422D4100E92BB9 /* MA-EMA-MACD介绍.md in Resources */,
+				48A240EB22422D4100E92BB9 /* 指标公式.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

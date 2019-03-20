@@ -16,9 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ChartAlgorithm : NSObject<ChartAlgorithmProtocol>
 
-//@property (nonatomic, assign) ChartAlgorithmType *algorithmType;
-
-
 @end
 
 NS_ASSUME_NONNULL_END
