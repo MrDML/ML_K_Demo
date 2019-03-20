@@ -69,7 +69,7 @@ typedef NS_ENUM(NSInteger, ChartItemTrend) {
 /**
  技术指标值
  */
-@property (nonatomic, strong) NSDictionary *extVal;
+@property (nonatomic, strong) NSMutableDictionary *extVal;
 
 
 /**

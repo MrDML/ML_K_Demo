@@ -25,187 +25,6 @@
 
 
 
-
-#pragma mark - 《MA简单移动平均数》 处理算法
-@interface MLChartAlgorithm (ChartAlgorithm_MA)
-
-
-/**
- 处理MA运算
- C:收盘价
- N:周期
- MA（N）=（C1+C2+……CN）/N
- @param num 天数
- @param datas 数据集
- @return return value description
- */
-- (NSArray<ChartItem *>*)handle_MA_WithNum:(int)num datas:(NSArray <ChartItem *>*)datas;
-
-@end
-
-@implementation MLChartAlgorithm (ChartAlgorithm_MA)
-
-- (NSArray<ChartItem *>*)handle_MA_WithNum:(int)num datas:(NSArray <ChartItem *>*)datas
-{
-    
-    [datas enumerateObjectsUsingBlock:^(ChartItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-       NSDictionary *dict = [self getMAValueWithNum:num index:idx datas:datas];
-        
-//        obj.extVal[]
-        
-        
-    }];
-    
-    return datas;
-}
-
-
-/**
- 计算移动平均数MA
-
- @param num <#num description#>
- @param index <#index description#>
- @param datas <#datas description#>
- @return <#return value description#>
- */
-- (NSDictionary *)getMAValueWithNum:(int)num index:(int)index datas:(NSArray <ChartItem *>*)datas
-{
-    // 价格 和 交易量
-    // {@"price":value,@"val":value};
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    // 价格
-    CGFloat price_Val = 0.f;
-    // 交易量
-    CGFloat vol_Val = 0.f;
-    if (index + 1 >= num) { // 索引是从0开始 没有第0天 从第一天开始 index + 1 >= N 累计N天内的
-        
-        for (int i = index; i > index + 1 - num; i--) {
-            vol_Val += datas[i].vol;
-            price_Val += datas[i].closePrice;
-        }
-        
-        vol_Val = vol_Val / num;
-        price_Val = price_Val / num;
-        
-        [dict setObject:[NSNumber numberWithFloat:price_Val] forKey:@"price"];
-        [dict setObject:[NSNumber numberWithFloat:vol_Val] forKey:@"price"];
-        
-        return dict;
-        
-    }else{ //  index + 1 < N 累计 index+1 天内的
-        
-        for (int i = index; i > 0; i--) {
-            vol_Val += datas[i].vol;
-            price_Val += datas[i].closePrice;
-        }
-        vol_Val = vol_Val / num;
-        price_Val = price_Val / num;
-        
-        [dict setObject:[NSNumber numberWithFloat:price_Val] forKey:@"price"];
-        [dict setObject:[NSNumber numberWithFloat:vol_Val] forKey:@"price"];
-        
-         return dict;
-    }
-    
-    
-    
-    return dict;
-}
-
-
-@end
-
-
-#pragma mark - 《EMA指数移动平均数》 处理算法
-@interface MLChartAlgorithm (ChartAlgorithm_EMA)
-
-@end
-
-@implementation MLChartAlgorithm (ChartAlgorithm_EMA)
-
-@end
-
-#pragma mark - 《RSI》 处理算法
-@interface MLChartAlgorithm (ChartAlgorithm_RSI)
-
-- (NSArray<ChartItem *>*)handle_RSI_WithNum:(int)num WithDats:(NSArray <ChartItem *>*)datas;
-
-@end
-
-@implementation MLChartAlgorithm (ChartAlgorithm_RSI)
-
-- (NSArray *)getAAndB:(int)a B:(int)b withDatas:(NSArray<ChartItem *>*)datas
-{
-    return nil;
-}
-
-- (NSArray<ChartItem *>*)handle_RSI_WithNum:(int)num WithDats:(NSArray <ChartItem *>*)datas;
-{
-    
-    
-    return nil;
-}
-
-@end
-
-#pragma mark - 《时分价格》 处理算法
-@interface MLChartAlgorithm (ChartAlgorithm_RSI_TimeLine)
-
-@end
-
-@implementation MLChartAlgorithm (ChartAlgorithm_RSI_TimeLine)
-
-@end
-
-#pragma mark - 《KDJ随机指标》 处理算法
-@interface MLChartAlgorithm (ChartAlgorithm_KDJ)
-
-@end
-
-@implementation MLChartAlgorithm (ChartAlgorithm_KDJ)
-
-@end
-
-
-#pragma mark - 《MACD随机指标》 处理算法
-@interface MLChartAlgorithm (ChartAlgorithm_MACD)
-
-@end
-
-@implementation MLChartAlgorithm (ChartAlgorithm_MACD)
-
-@end
-
-
-#pragma mark - 《BOLL随机指标》 处理算法
-@interface MLChartAlgorithm (ChartAlgorithm_BOLL)
-
-@end
-
-@implementation MLChartAlgorithm (ChartAlgorithm_BOLL)
-
-@end
-
-
-#pragma mark - 《SAR指标》 处理算法
-@interface MLChartAlgorithm (ChartAlgorithm_SAR)
-
-@end
-
-@implementation MLChartAlgorithm (ChartAlgorithm_SAR)
-
-@end
-
-#pragma mark - 《SAM指标》 处理算法
-@interface MLChartAlgorithm (ChartAlgorithm_SAM)
-
-@end
-
-@implementation MLChartAlgorithm (ChartAlgorithm_SAM)
-
-@end
-
-
 #pragma mark - MLChartAlgorithm
 @interface MLChartAlgorithm ()
 @property (nonatomic, strong) NSMutableArray *data_vals;
@@ -411,7 +230,7 @@
 
 
 
-
+// 私有方法
 /**
  根据name组装key
 
@@ -426,33 +245,33 @@
             
             break;
         case ChartAlgorithmType_TimeLine:
-            result = [NSString stringWithFormat:@"%@_%@",MLChart_Timeline,name];
+            result = [NSString stringWithFormat:@"%@_%@",MLSeries_Timeline,name];
             
             break;
         case ChartAlgorithmType_MA:
           
-             result = [NSString stringWithFormat:@"%@_%@_%@",MLChart_MA,[self.data_vals firstObject],name];
+             result = [NSString stringWithFormat:@"%@_%@_%@",MLSeries_MA,[self.data_vals firstObject],name];
             break;
         case ChartAlgorithmType_EMA:
-             result = [NSString stringWithFormat:@"%@_%@_%@",MLChart_EMA,[self.data_vals firstObject],name];
+             result = [NSString stringWithFormat:@"%@_%@_%@",MLSeries_EMA,[self.data_vals firstObject],name];
             break;
         case ChartAlgorithmType_KDJ:
-            result = [NSString stringWithFormat:@"%@_%@",MLChart_KDJ,name];
+            result = [NSString stringWithFormat:@"%@_%@",MLSeries_KDJ,name];
             break;
         case ChartAlgorithmType_MACD:
-            result = [NSString stringWithFormat:@"%@_%@",MLChart_MACD,name];
+            result = [NSString stringWithFormat:@"%@_%@",MLSeries_MACD,name];
             break;
         case ChartAlgorithmType_BOLL:
-            result = [NSString stringWithFormat:@"%@_%@",MLChart_BOLL,name];
+            result = [NSString stringWithFormat:@"%@_%@",MLSeries_BOLL,name];
             break;
         case ChartAlgorithmType_SAR:
-            result = [NSString stringWithFormat:@"%@%@",MLChart_SAR,name];
+            result = [NSString stringWithFormat:@"%@%@",MLSeries_SAR,name];
             break;
         case ChartAlgorithmType_SAM:
-             result = [NSString stringWithFormat:@"%@_%@_%@",MLChart_SAM,[self.data_vals firstObject],name];
+             result = [NSString stringWithFormat:@"%@_%@_%@",MLSeries_SAM,[self.data_vals firstObject],name];
             break;
         case ChartAlgorithmType_RSI:
-            result = [NSString stringWithFormat:@"%@_%@_%@",MLChart_RSI,[self.data_vals firstObject],name];
+            result = [NSString stringWithFormat:@"%@_%@_%@",MLSeries_RSI,[self.data_vals firstObject],name];
             break;
             
         default:
@@ -470,18 +289,16 @@
 {
     switch (self.type) {
         case ChartAlgorithmType_NONE:
-            
+           
             break;
         case ChartAlgorithmType_TimeLine:
-            
-            
+            return  [self handle_TimeLine_datas:datas];
             break;
         case ChartAlgorithmType_MA:
-            
-            
+            return  [self handle_MA_WithNum:[[self.data_vals firstObject] intValue] datas:datas];
             break;
         case ChartAlgorithmType_EMA:
-            
+            return  [self handle_EMA_WithNum:[[self.data_vals firstObject] intValue] datas:datas];
             break;
         case ChartAlgorithmType_KDJ:
             
@@ -499,7 +316,7 @@
             
             break;
         case ChartAlgorithmType_RSI:
-           return  [self handle_RSI_WithNum:[self.data_vals[0] intValue] WithDats:datas];
+
             break;
             
         default:
@@ -510,8 +327,220 @@
     return nil;
 }
 
+@end
+
+#pragma mark - 《时分价格》 处理算法
+@implementation MLChartAlgorithm (ChartAlgorithm_TimeLine)
+/**
+ 处理时分价格运算
+ 使用收盘价作为时分价
+
+ @param datas 数据集
+ @return 返回处理后的数据集
+ */
+- (NSArray<ChartItem *>*)handle_TimeLine_datas:(NSArray <ChartItem *>*)datas
+{
+    [datas enumerateObjectsUsingBlock:^(ChartItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        [obj.extVal setObject:[NSNumber numberWithFloat:obj.closePrice] forKey:[self getKeyWithName:MLSeries_Timeline]];
+         [obj.extVal setObject:[NSNumber numberWithFloat:obj.vol] forKey:[self getKeyWithName:MLSeries_Volume]];
+        // 组合
+        // Timeline_Timeline: data.closePrice
+        // Timeline_Volume: data.vol
+    }];
+    
+    return datas;
+}
+@end
+
+#pragma mark - 《MA简单移动平均数》 处理算法
+@implementation MLChartAlgorithm (ChartAlgorithm_MA)
+
+- (NSArray<ChartItem *>*)handle_MA_WithNum:(int)num datas:(NSArray <ChartItem *>*)datas
+{
+    
+    [datas enumerateObjectsUsingBlock:^(ChartItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        // {@"price":value,@"vol":value}; 交易量和价格
+        NSDictionary *dict = [self getMAValueWithNum:num index:(int)idx datas:datas];
+        [obj.extVal setObject:dict[@"price"] forKey:[self getKeyWithName:MLSeries_Timeline]];
+        [obj.extVal setObject:dict[@"vol"] forKey:[self getKeyWithName:MLSeries_Timeline]];
+    }];
+    
+    return datas;
+}
 
 
+/**
+ 计算移动平均数MA
+ 
+ @param num 周期
+ @param index 索引(天数)
+ @param datas 数据集
+ @return 处理后的数据集
+ */
+- (NSDictionary *)getMAValueWithNum:(int)num index:(int)index datas:(NSArray <ChartItem *>*)datas
+{
+    // 价格 和 交易量
+    // {@"price":value,@"vol":value};
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    // 价格
+    CGFloat price_Val = 0.f;
+    // 交易量
+    CGFloat vol_Val = 0.f;
+    if (index + 1 >= num) { // 索引是从0开始 没有第0天 从第一天开始 index + 1 >= N 累计N天内的
+        
+        for (int i = index; i > index + 1 - num; i--) {
+            vol_Val += datas[i].vol;
+            price_Val += datas[i].closePrice;
+        }
+        
+        vol_Val = vol_Val / num;
+        price_Val = price_Val / num;
+        
+        
+        [dict setObject:[NSNumber numberWithFloat:price_Val] forKey:@"price"];
+        [dict setObject:[NSNumber numberWithFloat:vol_Val] forKey:@"vol"];
+        
+        return dict;
+        
+    }else{ //  index + 1 < N 累计 index+1 天内的
+        
+        for (int i = index; i > 0; i--) {
+            vol_Val += datas[i].vol;
+            price_Val += datas[i].closePrice;
+        }
+        vol_Val = vol_Val / num;
+        price_Val = price_Val / num;
+        
+        [dict setObject:[NSNumber numberWithFloat:price_Val] forKey:@"price"];
+        [dict setObject:[NSNumber numberWithFloat:vol_Val] forKey:@"vol"];
+        
+        return dict;
+    }
+    
+    
+    
+    return dict;
+}
 
 @end
 
+#pragma mark - 《EMA指数移动平均数》 处理算法
+@implementation MLChartAlgorithm (ChartAlgorithm_EMA)
+
+/**
+ 处理EMA运算
+EMA(N) = 2/(N + 1) * (C - 昨日EMA) + 昨日EMA
+ == > 推导... 得出下面的公式
+EMA(N) = 2/(N + 1) * C + (N - 1)/(N + 1) * 昨日EMA
+ eg:EMA(12) = 2/13 * C + 11/13 * 昨日的EMA(12)
+
+ @param num 周期
+ @param datas 数据集
+ @return 处理技术指标完成的数据集
+ */
+- (NSArray<ChartItem *> *)handle_EMA_WithNum:(int)num datas:(NSArray<ChartItem *> *)datas
+{
+    
+    CGFloat prev_ema_price = 0.f;
+    CGFloat pre_ema_vol = 0.f;
+    
+    [datas enumerateObjectsUsingBlock:^(ChartItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        CGFloat c = datas[idx].closePrice; // 收盘价
+        CGFloat v = datas[idx].vol; // 交易量
+        // 价格
+        CGFloat ema_price = 0.f;
+        CGFloat ema_vol = 0.f;
+        // EMA(N)=2/(N+1) * (C -昨日EMA) + EMA
+        if (idx > 0) {
+            ema_price = prev_ema_price + (c - prev_ema_price) * 2 / (num + 1);
+            ema_vol = pre_ema_vol + (v - pre_ema_vol) * 2 / (num + 1);
+        }else{
+            ema_price = c;
+            ema_vol = v;
+        }
+       
+        // EMA_5_Timeline = ema_price; EMA 类型组成的时间线
+         [obj.extVal setObject:[NSNumber numberWithFloat:ema_price] forKey: [self getKeyWithName:MLSeries_Timeline]];
+        // EMA_5_Volume = ema_vol; EMA 类型组成的交易量
+         [obj.extVal setObject:[NSNumber numberWithFloat:ema_vol] forKey: [self getKeyWithName:MLSeries_Volume]];
+        
+    }];
+    return datas;
+ 
+}
+
+@end
+
+#pragma mark - 《RSI》 处理算法
+@interface MLChartAlgorithm (ChartAlgorithm_RSI)
+
+- (NSArray<ChartItem *>*)handle_RSI_WithNum:(int)num WithDats:(NSArray <ChartItem *>*)datas;
+
+@end
+
+@implementation MLChartAlgorithm (ChartAlgorithm_RSI)
+
+- (NSArray *)getAAndB:(int)a B:(int)b withDatas:(NSArray<ChartItem *>*)datas
+{
+    return nil;
+}
+
+- (NSArray<ChartItem *>*)handle_RSI_WithNum:(int)num WithDats:(NSArray <ChartItem *>*)datas;
+{
+    
+    
+    return nil;
+}
+
+@end
+
+
+
+#pragma mark - 《KDJ随机指标》 处理算法
+@interface MLChartAlgorithm (ChartAlgorithm_KDJ)
+
+@end
+
+@implementation MLChartAlgorithm (ChartAlgorithm_KDJ)
+
+@end
+
+
+#pragma mark - 《MACD随机指标》 处理算法
+@interface MLChartAlgorithm (ChartAlgorithm_MACD)
+
+@end
+
+@implementation MLChartAlgorithm (ChartAlgorithm_MACD)
+
+@end
+
+
+#pragma mark - 《BOLL随机指标》 处理算法
+@interface MLChartAlgorithm (ChartAlgorithm_BOLL)
+
+@end
+
+@implementation MLChartAlgorithm (ChartAlgorithm_BOLL)
+
+@end
+
+
+#pragma mark - 《SAR指标》 处理算法
+@interface MLChartAlgorithm (ChartAlgorithm_SAR)
+
+@end
+
+@implementation MLChartAlgorithm (ChartAlgorithm_SAR)
+
+@end
+
+#pragma mark - 《SAM指标》 处理算法
+@interface MLChartAlgorithm (ChartAlgorithm_SAM)
+
+@end
+
+@implementation MLChartAlgorithm (ChartAlgorithm_SAM)
+
+@end

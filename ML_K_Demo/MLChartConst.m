@@ -13,17 +13,17 @@
 #import <Foundation/Foundation.h>
 
 
-NSString *const  MLChart_Candle = @"Candle";
-NSString *const  MLChart_Timeline = @"Timeline";
-NSString *const  MLChart_Volume = @"Volume";
-NSString *const  MLChart_MA = @"MA";
-NSString *const  MLChart_EMA = @"EMA";
-NSString *const  MLChart_KDJ = @"KDJ";
-NSString *const  MLChart_MACD = @"MACD";
-NSString *const  MLChart_BOLL = @"BOLL";
-NSString *const  MLChart_SAR = @"SAR";
-NSString *const  MLChart_SAM = @"SAM";
-NSString *const  MLChart_RSI = @"RSI";
+NSString *const  MLSeries_Candle = @"Candle";
+NSString *const  MLSeries_Timeline = @"Timeline";
+NSString *const  MLSeries_Volume = @"Volume";
+NSString *const  MLSeries_MA = @"MA";
+NSString *const  MLSeries_EMA = @"EMA";
+NSString *const  MLSeries_KDJ = @"KDJ";
+NSString *const  MLSeries_MACD = @"MACD";
+NSString *const  MLSeries_BOLL = @"BOLL";
+NSString *const  MLSeries_SAR = @"SAR";
+NSString *const  MLSeries_SAM = @"SAM";
+NSString *const  MLSeries_RSI = @"RSI";
 
 
 #endif

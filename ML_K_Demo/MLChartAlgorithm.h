@@ -104,4 +104,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+
+#pragma mark - 《MA简单移动平均数》 处理算法
+@interface MLChartAlgorithm (ChartAlgorithm_MA)
+/**
+ 处理MA运算
+ C:收盘价
+ N:周期
+ MA（N）=（C1+C2+……CN）/N
+ @param num 天数
+ @param datas 数据集
+ @return return value description
+ */
+- (NSArray<ChartItem *>*)handle_MA_WithNum:(int)num datas:(NSArray <ChartItem *>*)datas;
+@end
+
+#pragma mark - 《EMA指数移动平均数》 处理算法
+@interface MLChartAlgorithm (ChartAlgorithm_EMA)
+
+/**
+ 处理EMA指标
+
+ @param num 周期
+ @param datas 数据集
+ @return 设置完成的数据集
+ */
+- (NSArray<ChartItem *>*)handle_EMA_WithNum:(int)num datas:(NSArray <ChartItem *>*)datas;
+@end
+
+#pragma mark - 《时分价格》 处理算法
+@interface MLChartAlgorithm (ChartAlgorithm_TimeLine)
+/**
+ 处理时分价格运算
+ 使用收盘价作为时分价
+ 
+ @param datas 数据集
+ @return 返回处理后的数据集
+ */
+- (NSArray<ChartItem *>*)handle_TimeLine_datas:(NSArray <ChartItem *>*)datas;
+@end
+
+#pragma mark - 《RSI》 处理算法
+@interface MLChartAlgorithm (ChartAlgorithm_RSI)
+- (NSArray<ChartItem *>*)handle_RSI_WithNum:(int)num WithDats:(NSArray <ChartItem *>*)datas;
+@end
+
+
 NS_ASSUME_NONNULL_END

@@ -14,17 +14,17 @@
 #import <Foundation/Foundation.h>
 
 
-FOUNDATION_EXPORT NSString *const  MLChart_Candle;
-FOUNDATION_EXPORT NSString *const  MLChart_Timeline;
-FOUNDATION_EXPORT NSString *const  MLChart_Volume;
-FOUNDATION_EXPORT NSString *const  MLChart_MA;
-FOUNDATION_EXPORT NSString *const  MLChart_EMA;
-FOUNDATION_EXPORT NSString *const  MLChart_KDJ;
-FOUNDATION_EXPORT NSString *const  MLChart_MACD;
-FOUNDATION_EXPORT NSString *const  MLChart_BOLL;
-FOUNDATION_EXPORT NSString *const  MLChart_SAR;
-FOUNDATION_EXPORT NSString *const  MLChart_SAM;
-FOUNDATION_EXPORT NSString *const  MLChart_RSI;
+FOUNDATION_EXPORT NSString *const  MLSeries_Candle;
+FOUNDATION_EXPORT NSString *const  MLSeries_Timeline;
+FOUNDATION_EXPORT NSString *const  MLSeries_Volume;
+FOUNDATION_EXPORT NSString *const  MLSeries_MA;
+FOUNDATION_EXPORT NSString *const  MLSeries_EMA;
+FOUNDATION_EXPORT NSString *const  MLSeries_KDJ;
+FOUNDATION_EXPORT NSString *const  MLSeries_MACD;
+FOUNDATION_EXPORT NSString *const  MLSeries_BOLL;
+FOUNDATION_EXPORT NSString *const  MLSeries_SAR;
+FOUNDATION_EXPORT NSString *const  MLSeries_SAM;
+FOUNDATION_EXPORT NSString *const  MLSeries_RSI;
 
 
 
