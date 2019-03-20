@@ -7,6 +7,7 @@
 //
 
 #import "MLChartAlgorithm.h"
+#import "MLChartConst.h"
 
 
 #define VA_LIST(values, array)  va_list arglist;\
@@ -214,6 +215,59 @@
         [self.data_vals addObject:value];
     }
     return self;
+}
+
+
+
+
+- (NSString *)getKeyWithName:(NSString *)name
+{
+    NSString *result = nil;
+    switch (self.type) {
+        case ChartAlgorithmType_NONE:
+            
+            break;
+        case ChartAlgorithmType_TimeLine:
+            result = [NSString stringWithFormat:@"%@_%@",MLChart_Timeline,name];
+            
+            break;
+        case ChartAlgorithmType_MA:
+          
+            [self.data_vals firstObject];
+             result = [NSString stringWithFormat:@"%@_%@_%@",MLChart_Timeline,[self.data_vals firstObject],name];
+            break;
+        case ChartAlgorithmType_EMA:
+            
+            break;
+        case ChartAlgorithmType_KDJ:
+            
+            break;
+        case ChartAlgorithmType_MACD:
+            
+            break;
+        case ChartAlgorithmType_BOLL:
+            
+            break;
+        case ChartAlgorithmType_SAR:
+            
+            break;
+        case ChartAlgorithmType_RSI:
+            
+            break;
+            
+            
+        default:
+            break;
+    }
+    
+    
+    return nil;
+}
+
+
+- (void)jointStringToSetKey:(NSNumber *)number name:(NSString *)name
+{
+    
 }
 
 

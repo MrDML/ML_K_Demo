@@ -11,6 +11,7 @@
 typedef NS_ENUM(NSInteger, ChartAlgorithmType)
 {
     ChartAlgorithmType_NONE = 0,
+    ChartAlgorithmType_TimeLine,
     ChartAlgorithmType_MA,
     ChartAlgorithmType_EMA,
     ChartAlgorithmType_KDJ,

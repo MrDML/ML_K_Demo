@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E0F020322412382006BC3A9 /* MLChartConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E0F020222412382006BC3A9 /* MLChartConst.m */; };
 		0EA5887F223E285100080EA8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA5887E223E285100080EA8 /* AppDelegate.m */; };
 		0EA58882223E285100080EA8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA58881223E285100080EA8 /* ViewController.m */; };
 		0EA58885223E285100080EA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EA58883223E285100080EA8 /* Main.storyboard */; };
@@ -47,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E0F020122412382006BC3A9 /* MLChartConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLChartConst.h; sourceTree = "<group>"; };
+		0E0F020222412382006BC3A9 /* MLChartConst.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLChartConst.m; sourceTree = "<group>"; };
 		0EA5887A223E285100080EA8 /* ML_K_Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ML_K_Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EA5887D223E285100080EA8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0EA5887E223E285100080EA8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -172,6 +175,8 @@
 				488A3E6D223F96BB0019EBD4 /* ChartAlgorithmProtocol.h */,
 				488A3E73223F9E270019EBD4 /* MLChartAlgorithm.h */,
 				488A3E74223F9E270019EBD4 /* MLChartAlgorithm.m */,
+				0E0F020122412382006BC3A9 /* MLChartConst.h */,
+				0E0F020222412382006BC3A9 /* MLChartConst.m */,
 			);
 			path = ML_K_Demo;
 			sourceTree = "<group>";
@@ -335,6 +340,7 @@
 				488A3E66223F656C0019EBD4 /* UIView+MLExtesionFrame.m in Sources */,
 				0EA588C0223E6FD800080EA8 /* MLShapeLayer.m in Sources */,
 				0EA5887F223E285100080EA8 /* AppDelegate.m in Sources */,
+				0E0F020322412382006BC3A9 /* MLChartConst.m in Sources */,
 				0EA588C6223E725E00080EA8 /* Section.m in Sources */,
 				488A3E75223F9E270019EBD4 /* MLChartAlgorithm.m in Sources */,
 				0EA588BD223E341300080EA8 /* ToolBarView.m in Sources */,
