@@ -88,6 +88,7 @@
 @end
 
 
+
 #pragma mark - 扩展方法
 @interface MLChartAlgorithm (ChartAlgorithm_Extension)
 /**
@@ -326,7 +327,7 @@
  @param name name
  @return 组装完成的key
  */
-- (NSString *)getKeyWithName:(NSString *)name
+- (NSString *)getKeyWithName:(NSString * _Nullable)name
 {
     NSString *result = nil;
     switch (self.type) {
@@ -399,7 +400,7 @@
             [self handle_BOLL_WithNum:[self.data_vals[0] intValue] K:[self.data_vals[1] intValue] Dats:datas];
             break;
         case ChartAlgorithmType_SAR:
-            
+            [self handle_SAR_WithNum:[self.data_vals[0] intValue]  minAF:[self.data_vals[1] intValue]  maxAF:[self.data_vals[2] intValue]  Dats:datas];
             break;
         case ChartAlgorithmType_SAM:
             
@@ -907,12 +908,6 @@ EMA(N) = 2/(N + 1) * C + (N - 1)/(N + 1) * 昨日EMA
 
 
 #pragma mark - 《SAR指标》 处理算法
-@interface MLChartAlgorithm (ChartAlgorithm_SAR)
-
-- (NSArray<ChartItem *>*)handle_SAR_WithNum:(int)num minAF:(int)minAF maxAF:(int)maxAF Dats:(NSArray <ChartItem *>*)datas;
-
-@end
-
 @implementation MLChartAlgorithm (ChartAlgorithm_SAR)
 /**
  SAR指标又叫抛物线指标或停损转向操作点指标
@@ -948,12 +943,166 @@ EMA(N) = 2/(N + 1) * C + (N - 1)/(N + 1) * 昨日EMA
  - Parameter datas: 待处理的数据集合
  - Returns: 处理后的数据集合
  */
-//- (NSArray<ChartItem *>*)handle_SAR_WithNum:(int)num minAF:(int)minAF maxAF:(int)maxAF Dats:(NSArray <ChartItem *>*)datas
-//{
-//    
-//    
-//    
-//}
+- (NSArray<ChartItem *>*)handle_SAR_WithNum:(int)num minAF:(int)minAF maxAF:(int)maxAF Dats:(NSArray <ChartItem *>*)datas
+{
+    
+  __block  CGFloat sar = 0.f , af = minAF , ep = 0.f;
+    
+  __block  ChartItem *pre_data = nil;
+   __block BOOL isUP = YES;
+
+    do {
+        // 这个指标至少两条数据才显示
+        if (num < 2 || datas.count < 2) {
+            break;
+        }
+        
+        // 1. 初始值SAR(T0)的确定
+        // 若T1周期中SAR(T1)上涨趋势, 则SAR(T0)为T0周期的最低价;
+        // 若T1周期下跌趋势,则SAR(T0)为周期的最高价;
+        if (datas[1].closePrice > datas[0].closePrice) { // 上涨趋势
+            sar = datas[0].lowPrice;
+            isUP = YES;
+        }else{ // 下跌趋势
+            sar = datas[0].highPrice;
+            isUP = NO;
+        }
+        
+        // 记录第一日的价位
+        pre_data = datas[0];
+        
+        [datas enumerateObjectsUsingBlock:^(ChartItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+           
+            
+            if (idx > 0) { // 忽略索引为0的值
+                // 确定今天的SAR值
+               NSDictionary *res_dict = [self getFinal_SAR_withNum:num sar:sar index:(int)idx isUP:isUP datas:datas];
+                
+                CGFloat finalSAR = [res_dict[@"sar"] floatValue];
+                BOOL finalIsUp = [res_dict[@"isup"] boolValue];
+                // 出现行情反转, 充值AF加速因子
+                if (isUP != finalIsUp) {
+                    af = minAF;
+                }
+                sar = finalSAR;
+                isUP = finalIsUp;
+            }
+
+            // 确定今天的SAR
+            [obj.extVal setObject:[NSNumber numberWithFloat:sar] forKey:[self getKeyWithName:nil]];
+            
+            // 预算明天的SAR的值
+            
+            // SAR(Tn)=SAR(Tn-1) + AF(Tn) * [EP(Tn-1) - SAR(Tn-1)]
+            // SAR(1) = SAR(0) + AF(1)*[EP(0)-SAR(0)] 第一天
+            // 2. 极点价EP(最高价/最低价)的确定
+            //    若Tn周期为上涨趋势(SAR在K线下方), EP(Tn-1)为Tn-1周期的最高价, 若Tn周期为下跌趋势(SAR在K线上方),EP(Tn-1)为Tn-1周期的最低价
+            
+            if (isUP) {
+                ep = pre_data.highPrice;
+            }else{
+                ep = pre_data.lowPrice;
+            }
+            
+            // 3. 加速因子AF的确定
+            //    a. 加速因子初始值为0.02,即AF(T0)=0.02;
+            //    b. 若Tn-1, Tn周期都为上涨趋势时,
+            //       当Tn周期的最高价>Tn-1周期的最高价,则AF(Tn)=AF(Tn-1)+0.02,
+            //       当Tn周期的最高价<=Tn-1周期的最高价,则AF(Tn)=AF(Tn-1),
+            //       单加速因子AF最高不超过0.02
+            //    c. 若Tn-1, Tn周期都为下跌趋势时,
+            //       当Tn周期的最低价<Tn-1周期的最低价,则AF(Tn)=AF(Tn-1)+0.02,
+            //       当Tn周期的最低价>=Tn-1h周期的最低价,则AF(Tn)=AF(Tn-1),
+            //    d. 任何一次行情的转变,加速因子AF都必须重新由0.02起算
+            //    比如,Tn-1周期为上涨趋势,Tn周期为下跌趋势(或Tn-1下跌,Tn上涨),AF(Tn)需重新由0.02为基础进行计算,即AF(Tn)=AF(T0)=0.02;
+            //    e. 加速因子最高不超过0.2,当AF>0.2时,维持最大值
+            if (isUP) {
+                if (obj.highPrice > pre_data.highPrice) {
+                    af = af + minAF;
+                }
+            }else{
+                if (obj.lowPrice < pre_data.lowPrice) {
+                    af = af + minAF;
+                }
+            }
+            if (af > maxAF) {
+                af = minAF;
+            }
+            
+            sar = sar + af * (ep - sar);
+            
+            // 记录明天的SAR值
+             [obj.extVal setObject:[NSNumber numberWithFloat:sar] forKey:[self getKeyWithName:@"tomorrow"]];
+            
+            pre_data = obj;
+            
+        }];
+
+    } while (0);
+
+    return  datas;
+    
+}
+
+
+/**
+ 取得当前最终的SAR值
+
+ @param num 趋势判断周期
+ @param sar 预算的sar值
+ @param index 该周期的位置
+ @param isUP 趋势
+ @param datas 数据集合
+ @return @{"sar":value, @"isup":@"YES"}
+ */
+- (NSDictionary *)getFinal_SAR_withNum:(int)num sar:(CGFloat)sar index:(int)index isUP:(BOOL)isUP datas:(NSArray <ChartItem *>*)datas
+{
+    // 4. 确定今天的SAR值
+    // a. 通过公式SAR(Tn)=SAR(Tn-1)+AF(TN)*[EP(Tn-1)-SAR(Tn-1)] 计算出Tn周期的值;
+    // b. 若Tn周期为上涨趋势, 当SAR(Tn)>Tn周期的收盘价,则Tn周期最终 SAR值应为num天周期段的最高价中的最大值
+    //    当SAR(Tn)<=Tn周期的收盘价,则Tn周期最终SAR值为SAR(Tn), 即ASAR=SAR(Tn);
+    // c. 若Tn周期为下跌趋势, 当SAR(Tn)<Tn周期的收盘价,则Tn周期最终 SAR值应为num天周期的最低价中的最小值
+    //    当SAR(Tn)>=Tn周期的收盘价, 则Tn周期最终SAR值为SAR(Tn), 即 SAR=SAR(Tn);
+    
+    NSMutableDictionary *result = [NSMutableDictionary dictionary];
+    
+    CGFloat finalSAR = sar;
+    
+    BOOL finalIsUp = isUP;
+    
+    int start = index;
+    
+    if (isUP) {
+        
+        if (sar > datas[index].closePrice) { // 收盘价跌破SAR,转向做空
+            do {
+                finalSAR = MAX(datas[start].highPrice, finalSAR); // 获取周期中的最大值
+                start -= 1;  // 递减知道num天前
+            } while (start >= MAX(index - num + 1, 0)); // eg: index = 3,(索引是从0开始) 其实已经过3 + 1 天了
+            finalIsUp = NO;
+        }
+        
+    }else{
+        if (sar < datas[index].closePrice) {// 收盘价突破SAR, 转向做多
+            // 从今天开始数前num天的最低价
+            do {
+                finalSAR = MIN(datas[start].lowPrice, finalIsUp); // 获取周期中的最小值
+                start -= 1; // 递减知道num天前
+            } while (start >= MAX(index - num + 1, 0));
+            finalIsUp = YES;
+        }
+    }
+    
+    
+    [result setObject:[NSNumber numberWithFloat:finalIsUp] forKey:@"sar"];
+    [result setObject:[NSNumber numberWithBool:finalIsUp] forKey:@"isup"];
+    
+    return result;
+}
+
+
+
+
 @end
 
 #pragma mark - 《SAM指标》 处理算法
