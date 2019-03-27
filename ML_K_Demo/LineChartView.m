@@ -12,6 +12,7 @@
 #import "Section.h"
 #import "ChartItem.h"
 
+
 static dispatch_group_t group_t;
 
 static dispatch_queue_t queue_t;
@@ -111,21 +112,21 @@ inline static void initDispatch()
 - (void)drawLayerView
 {
     // 先清空所有的子图层
-    
-    // 初始化图形数据
-    dispatch_group_async(group_t, queue_t, ^{
-        [self initChart];
-    });
 
-    
-    dispatch_group_notify(group_t,queue_t, ^{
+    // 初始化图形数据
+    BOOL res = [self initChart];
+    if (res) {
+        
+        // 待绘制的x坐标标签（数组中防暑的是i）
+        
         // 绘制每个分区
         [self buildSection:^(Section *section, int index) {
             
             
         }];
-    });
+    }
     
+   
    
     
     
@@ -136,7 +137,10 @@ inline static void initDispatch()
 
 
 
-- (void)initChart
+/**
+ 重置数据
+ */
+- (void)resetData
 {
     // 删除所有的数据源
     [self.datas removeAllObjects];
@@ -160,11 +164,108 @@ inline static void initDispatch()
                 [self.datas addObject:item];
             }
         }
-    
+        
+        // 执行算法方程式计算值，添加到对象中
+        for (ChartAlgorithm *Algorithm in self.handlerOfAlgorithms) {
+            [Algorithm handleAlgorithm:self.datas];
+        }
+
     } while (0);
     
 }
 
+
+/**
+ 初始化图标结构
+ */
+- (BOOL)initChart
+{
+    // 通过代理获取总共的数据点个数
+    if ( [self.delegate respondsToSelector:@selector(numberOfPointsInKLineChart:)]) {
+        self.plotCount = [self.delegate numberOfPointsInKLineChart:self];
+    }
+    // 数据条数不一致，需要重新计算
+    if (self.plotCount != self.datas.count) {
+        // 重新初始化数据
+        [self resetData];
+    }
+    
+    // 计算显示起始点 以及范围
+    do {
+        // 如果数据 小于等于0 不在执行 该部分的代码
+        if (self.plotCount <= 0 ) {
+            break;
+        }
+        
+        // 如果现实全部，显示范围为全部数据
+        if (self.isShowAll) {
+            // 数据范围
+            self.range = self.plotCount;
+            // 开始位置
+            self.rangeFrom=0;
+            // 结束位置
+            self.rangeTo = self.plotCount;
+        }
+        
+        // 图标刷新滚动默认时， 如果第一次初始化，就默认滚动到最后显示 (设定好位置，下面代码使用)
+        if (self.scrollToPosition == ChartViewScrollPosition_None) {
+            // 如果图表的索引为0，则进行初始化
+            if (self.rangeTo == 0 || self.plotCount < self.rangeTo) {
+                self.scrollToPosition = ChartViewScrollPosition_End;
+            }
+        }
+        
+        
+        if (self.scrollToPosition == ChartViewScrollPosition_Top) { // 计算rangTo的长度
+            self.rangeFrom = 0;
+            if (self.rangeFrom + self.range < self.plotCount) {
+                self.rangeTo = self.rangeFrom + self.range;
+            }else{
+                self.rangeTo = self.plotCount;
+            }
+            self.selectedIndex = -1;
+        }else if (self.scrollToPosition == ChartViewScrollPosition_End){
+            self.rangeTo = self.plotCount;
+            if (self.rangeTo - self.range > 0) {
+                self.rangeFrom = self.rangeTo - self.range;
+            }else{
+                self.rangeFrom = 0;
+            }
+            self.selectedIndex = -1;
+
+        }
+        
+        
+        
+        
+        
+        
+    } while (0);
+    
+    // 重置图表刷新滚动 默认不处理
+    self.scrollToPosition = ChartViewScrollPosition_None;
+    
+    // 超出范围，选择最后一个元素选中
+    if (self.selectedIndex < 0 || self.selectedIndex >= self.rangeTo) {
+        self.selectedIndex = self.range - 1;
+    }
+    
+    // 创建背景
+    
+    
+    MLShapeLayer *backgroundLayer = [[MLShapeLayer alloc] init];
+    CGFloat width = self.frame.size.width;
+    CGFloat height = self.frame.size.height;
+    UIBezierPath *backgroundPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, width, height) cornerRadius:0];
+    backgroundLayer.path = backgroundPath.CGPath;
+    backgroundLayer.fillColor = self.backgroundColor.CGColor;
+    [self.drawLayer addSublayer:backgroundLayer];
+    
+    // 数据重置后， 判断是否存在
+    return self.datas > 0 ? YES : NO;
+    
+    
+}
 
 
 

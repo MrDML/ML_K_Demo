@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "NormModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 
@@ -71,6 +71,10 @@ typedef NS_ENUM(NSInteger, ChartItemTrend) {
  */
 @property (nonatomic, strong) NSMutableDictionary *extVal;
 
+/**
+ 技术指标值模型
+ */
+@property (nonatomic, strong) NormModel *norm;
 
 /**
  趋势类型

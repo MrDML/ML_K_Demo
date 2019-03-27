@@ -87,6 +87,10 @@
 - (NSArray<ChartItem *>*)handle_SAR_WithNum:(int)num minAF:(int)minAF maxAF:(int)maxAF Dats:(NSArray <ChartItem *>*)datas;
 @end
 
+#pragma mark - 《SAM指标》 处理算法
+@interface MLChartAlgorithm (ChartAlgorithm_SAM)
+- (NSArray<ChartItem *>*)handle_SAM_WithNum:(int)num datas:(NSArray <ChartItem *>*)datas;
+@end
 
 
 #pragma mark - 扩展方法
@@ -403,7 +407,7 @@
             [self handle_SAR_WithNum:[self.data_vals[0] intValue]  minAF:[self.data_vals[1] intValue]  maxAF:[self.data_vals[2] intValue]  Dats:datas];
             break;
         case ChartAlgorithmType_SAM:
-            
+            [self handle_SAM_WithNum:[[self.data_vals firstObject] intValue] datas:datas];
             break;
         case ChartAlgorithmType_RSI:
             [self handle_RSI_WithNum:[[self.data_vals firstObject] intValue] WithDats:datas];
@@ -833,7 +837,7 @@ EMA(N) = 2/(N + 1) * C + (N - 1)/(N + 1) * 昨日EMA
             CGFloat bar = 2 * (dif - dea);
             
            
-            [obj.extVal setObject:[NSNumber numberWithFloat:dif] forKey: [self getKeyWithName:@"DIF"]];
+             [obj.extVal setObject:[NSNumber numberWithFloat:dif] forKey: [self getKeyWithName:@"DIF"]];
              [obj.extVal setObject:[NSNumber numberWithFloat:dea] forKey: [self getKeyWithName:@"DEA"]];
              [obj.extVal setObject:[NSNumber numberWithFloat:bar] forKey: [self getKeyWithName:@"BAR"]];
             
@@ -1106,12 +1110,102 @@ EMA(N) = 2/(N + 1) * C + (N - 1)/(N + 1) * 昨日EMA
 @end
 
 #pragma mark - 《SAM指标》 处理算法
-@interface MLChartAlgorithm (ChartAlgorithm_SAM)
-
-@end
-
 @implementation MLChartAlgorithm (ChartAlgorithm_SAM)
 
+
+/**
+ 处理SAM运算
+ 1.计算每个点往后num周期内的最高交易量，最后少于num的条数，只计算最后个数的最高交易量
+ 2.在主图蜡烛柱边框加颜色显示
+ 3.在主图收盘价记录点线
+ 4.在副图交易量柱边框加颜色显示
+ 5.在副图交易量记录点线
+ @param num 天数
+ @param datas 未处理的数据集
+ @return 处理过后的数据集
+ */
+- (NSArray<ChartItem *>*)handle_SAM_WithNum:(int)num datas:(NSArray <ChartItem *>*)datas
+{
+    // 最大交易量的收盘价
+   __block CGFloat max_vol_price = 0.f;
+    // 最大交易量
+   __block CGFloat max_vol =0.f;
+    // 最大交易量位置
+   __block int max_index = 0;
+    
+    [datas enumerateObjectsUsingBlock:^(ChartItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+       // 超过了num周期都没找到最大值，重新在index后num个寻找
+        if (idx - max_index == num) {
+            
+            max_vol_price = 0;
+            max_vol = 0;
+            max_index = 0;
+            
+            for (int i = (int)idx - num + 1; i <= (int)idx ; i ++) {
+                
+                CGFloat c = datas[i].closePrice;
+                CGFloat v = datas[i].vol;
+                if (v > max_vol) {
+                    max_vol_price = c;
+                    max_vol = v;
+                    max_index = i;
+                }
+            }
+            
+            // 重置最大值之后的计算数值
+            
+            for (int i = max_index; i <= (int)idx ; i ++) {
+                
+                 [datas[i].extVal setObject:[NSNumber numberWithFloat:max_vol_price] forKey:[self getKeyWithName:MLSeries_Timeline]];
+                  [datas[i].extVal setObject:[NSNumber numberWithFloat:max_vol] forKey:[self getKeyWithName:MLSeries_Volume]];
+                
+            }
+            
+            
+        }else{
+            // 每位移一个数，计算是否最大交易量
+            CGFloat c = datas[idx].closePrice;
+            CGFloat v = datas[idx].vol;
+            
+            if (v > max_vol) {
+                max_vol_price = c;
+                max_vol = v;
+                max_index = (int)idx;
+            }
+            
+        }
+        
+        
+        if (idx > num - 1) {
+            [obj.extVal setObject:[NSNumber numberWithFloat:max_vol_price] forKey:[self getKeyWithName:MLSeries_Timeline]];
+            [obj.extVal setObject:[NSNumber numberWithFloat:max_vol] forKey:[self getKeyWithName:MLSeries_Volume]];
+            
+            // 记录填充颜色的最大值
+            NSString *priceName = [NSString stringWithFormat:@"%@_BAR",MLSeries_Timeline];
+            NSString *volumeName = [NSString stringWithFormat:@"%@_BAR",MLSeries_Volume];
+            // 取出最大值
+            ChartItem *maxData  = datas[max_index];
+             [maxData.extVal setObject:[NSNumber numberWithFloat:max_vol_price] forKey:[self getKeyWithName:priceName]];
+             [maxData.extVal setObject:[NSNumber numberWithFloat:max_vol] forKey:[self getKeyWithName:volumeName]];
+            
+        }else if (idx == num - 1){
+            // 补充开头没有画的线
+            for (int i = max_index; i <= idx; i ++) {
+                [datas[i].extVal setObject:[NSNumber numberWithFloat:max_vol_price] forKey:[self getKeyWithName:MLSeries_Timeline]];
+                [datas[i].extVal setObject:[NSNumber numberWithFloat:max_vol] forKey:[self getKeyWithName:MLSeries_Volume]];
+            }
+        }
+        
+    }];
+    
+    for (int i = max_index; i < datas.count; i ++) {
+        [datas[i].extVal setObject:[NSNumber numberWithFloat:max_vol_price] forKey:[self getKeyWithName:MLSeries_Timeline]];
+        [datas[i].extVal setObject:[NSNumber numberWithFloat:max_vol] forKey:[self getKeyWithName:MLSeries_Volume]];
+    }
+    
+    
+    return datas;
+}
 @end
 
 
@@ -1141,6 +1235,7 @@ EMA(N) = 2/(N + 1) * C + (N - 1)/(N + 1) * 昨日EMA
     return result;
     
 }
+
 /**
  获取某日的EMA数据
  

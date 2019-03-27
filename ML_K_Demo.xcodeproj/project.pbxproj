@@ -34,6 +34,7 @@
 		48A240EA22422D4100E92BB9 /* 02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 48A240E422422D4100E92BB9 /* 02.jpg */; };
 		48A240EB22422D4100E92BB9 /* 指标公式.md in Resources */ = {isa = PBXBuildFile; fileRef = 48A240E522422D4100E92BB9 /* 指标公式.md */; };
 		48A240EC22422D4100E92BB9 /* KDJ介绍.md in Resources */ = {isa = PBXBuildFile; fileRef = 48A240E622422D4100E92BB9 /* KDJ介绍.md */; };
+		48F0DFCF224B25B400E6D4F0 /* NormModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48F0DFCE224B25B400E6D4F0 /* NormModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,8 @@
 		48A240E422422D4100E92BB9 /* 02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 02.jpg; sourceTree = "<group>"; };
 		48A240E522422D4100E92BB9 /* 指标公式.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "指标公式.md"; sourceTree = "<group>"; };
 		48A240E622422D4100E92BB9 /* KDJ介绍.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "KDJ介绍.md"; sourceTree = "<group>"; };
+		48F0DFCD224B25B400E6D4F0 /* NormModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NormModel.h; sourceTree = "<group>"; };
+		48F0DFCE224B25B400E6D4F0 /* NormModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NormModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +193,8 @@
 				488A3E74223F9E270019EBD4 /* MLChartAlgorithm.m */,
 				0E0F020122412382006BC3A9 /* MLChartConst.h */,
 				0E0F020222412382006BC3A9 /* MLChartConst.m */,
+				48F0DFCD224B25B400E6D4F0 /* NormModel.h */,
+				48F0DFCE224B25B400E6D4F0 /* NormModel.m */,
 			);
 			path = ML_K_Demo;
 			sourceTree = "<group>";
@@ -368,6 +373,7 @@
 				0EA588C3223E700900080EA8 /* MLTextLayer.m in Sources */,
 				0EA588B7223E333900080EA8 /* TickerTopView.m in Sources */,
 				488A3E6C223F962D0019EBD4 /* ChartAlgorithm.m in Sources */,
+				48F0DFCF224B25B400E6D4F0 /* NormModel.m in Sources */,
 				0EA588B4223E314400080EA8 /* ChartCustomViewController.m in Sources */,
 				488A3E66223F656C0019EBD4 /* UIView+MLExtesionFrame.m in Sources */,
 				0EA588C0223E6FD800080EA8 /* MLShapeLayer.m in Sources */,

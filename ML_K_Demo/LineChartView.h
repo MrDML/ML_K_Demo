@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChartAlgorithm.h"
 
 NS_ASSUME_NONNULL_BEGIN
 typedef NS_ENUM(NSInteger, YAxisShowPostion) {
@@ -14,6 +15,16 @@ typedef NS_ENUM(NSInteger, YAxisShowPostion) {
     YAxisShowPostion_right,
     YAxisShowPostion_none
 };
+
+// 图标滚动位置
+typedef NS_ENUM(NSInteger, ChartViewScrollPosition) {
+    ChartViewScrollPosition_None,
+    ChartViewScrollPosition_Top,
+    ChartViewScrollPosition_End
+};
+
+
+
 
 
 @class LineChartView;
@@ -103,6 +114,24 @@ typedef NS_ENUM(NSInteger, YAxisShowPostion) {
  */
 @property (nonatomic, assign) int showXAxisOnSectionIndex;
 
+// 计算 指标
+@property (nonatomic, strong) NSMutableArray <ChartAlgorithm *>*handlerOfAlgorithms;
+
+/**
+ 是否显示所有内容， 默认NO
+ */
+@property (nonatomic, assign,getter=isShowAll) BOOL showall;
+
+
+/**
+ 图标滚动位置 图表刷新后开始显示位置
+ */
+@property (nonatomic, assign) ChartViewScrollPosition scrollToPosition;
+
+/**
+ 选择索引位 默认-1
+ */
+@property (nonatomic, assign) int selectedIndex;
 
 @end
 

@@ -10,4 +10,14 @@
 
 @implementation ChartItem
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.norm = [[NormModel alloc] init];
+    }
+    return self;
+}
+
+
 @end
