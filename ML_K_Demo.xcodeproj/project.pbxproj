@@ -34,6 +34,16 @@
 		48A240EA22422D4100E92BB9 /* 02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 48A240E422422D4100E92BB9 /* 02.jpg */; };
 		48A240EB22422D4100E92BB9 /* 指标公式.md in Resources */ = {isa = PBXBuildFile; fileRef = 48A240E522422D4100E92BB9 /* 指标公式.md */; };
 		48A240EC22422D4100E92BB9 /* KDJ介绍.md in Resources */ = {isa = PBXBuildFile; fileRef = 48A240E622422D4100E92BB9 /* KDJ介绍.md */; };
+		48ACD718224C78550019EA4E /* CommonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACD717224C78550019EA4E /* CommonModel.m */; };
+		48ACD71B224C96CC0019EA4E /* Series.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACD71A224C96CC0019EA4E /* Series.m */; };
+		48ACD71E224C996D0019EA4E /* YAxis.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACD71D224C996D0019EA4E /* YAxis.m */; };
+		48ACD721224CADCD0019EA4E /* ChartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACD720224CADCD0019EA4E /* ChartModel.m */; };
+		48ACD724224CBAAC0019EA4E /* MLLineChartStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACD723224CBAAC0019EA4E /* MLLineChartStyle.m */; };
+		48ACD728224CC49C0019EA4E /* MLLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACD727224CC49C0019EA4E /* MLLineModel.m */; };
+		48ACD72B224CC4B40019EA4E /* MLCandleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACD72A224CC4B40019EA4E /* MLCandleModel.m */; };
+		48ACD72E224CC4C30019EA4E /* MLColumnModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACD72D224CC4C30019EA4E /* MLColumnModel.m */; };
+		48ACD731224CC4D00019EA4E /* MLBarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACD730224CC4D00019EA4E /* MLBarModel.m */; };
+		48ACD734224CC4E10019EA4E /* MLRoundModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACD733224CC4E10019EA4E /* MLRoundModel.m */; };
 		48F0DFCF224B25B400E6D4F0 /* NormModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48F0DFCE224B25B400E6D4F0 /* NormModel.m */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +114,26 @@
 		48A240E422422D4100E92BB9 /* 02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 02.jpg; sourceTree = "<group>"; };
 		48A240E522422D4100E92BB9 /* 指标公式.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "指标公式.md"; sourceTree = "<group>"; };
 		48A240E622422D4100E92BB9 /* KDJ介绍.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "KDJ介绍.md"; sourceTree = "<group>"; };
+		48ACD716224C78550019EA4E /* CommonModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonModel.h; sourceTree = "<group>"; };
+		48ACD717224C78550019EA4E /* CommonModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonModel.m; sourceTree = "<group>"; };
+		48ACD719224C96CC0019EA4E /* Series.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Series.h; sourceTree = "<group>"; };
+		48ACD71A224C96CC0019EA4E /* Series.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Series.m; sourceTree = "<group>"; };
+		48ACD71C224C996D0019EA4E /* YAxis.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YAxis.h; sourceTree = "<group>"; };
+		48ACD71D224C996D0019EA4E /* YAxis.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YAxis.m; sourceTree = "<group>"; };
+		48ACD71F224CADCD0019EA4E /* ChartModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChartModel.h; sourceTree = "<group>"; };
+		48ACD720224CADCD0019EA4E /* ChartModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChartModel.m; sourceTree = "<group>"; };
+		48ACD722224CBAAC0019EA4E /* MLLineChartStyle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLLineChartStyle.h; sourceTree = "<group>"; };
+		48ACD723224CBAAC0019EA4E /* MLLineChartStyle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLLineChartStyle.m; sourceTree = "<group>"; };
+		48ACD726224CC49C0019EA4E /* MLLineModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLLineModel.h; sourceTree = "<group>"; };
+		48ACD727224CC49C0019EA4E /* MLLineModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLLineModel.m; sourceTree = "<group>"; };
+		48ACD729224CC4B40019EA4E /* MLCandleModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLCandleModel.h; sourceTree = "<group>"; };
+		48ACD72A224CC4B40019EA4E /* MLCandleModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLCandleModel.m; sourceTree = "<group>"; };
+		48ACD72C224CC4C30019EA4E /* MLColumnModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLColumnModel.h; sourceTree = "<group>"; };
+		48ACD72D224CC4C30019EA4E /* MLColumnModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLColumnModel.m; sourceTree = "<group>"; };
+		48ACD72F224CC4D00019EA4E /* MLBarModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLBarModel.h; sourceTree = "<group>"; };
+		48ACD730224CC4D00019EA4E /* MLBarModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLBarModel.m; sourceTree = "<group>"; };
+		48ACD732224CC4E10019EA4E /* MLRoundModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLRoundModel.h; sourceTree = "<group>"; };
+		48ACD733224CC4E10019EA4E /* MLRoundModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLRoundModel.m; sourceTree = "<group>"; };
 		48F0DFCD224B25B400E6D4F0 /* NormModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NormModel.h; sourceTree = "<group>"; };
 		48F0DFCE224B25B400E6D4F0 /* NormModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NormModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,6 +187,7 @@
 		0EA5887C223E285100080EA8 /* ML_K_Demo */ = {
 			isa = PBXGroup;
 			children = (
+				48ACD725224CC46C0019EA4E /* Model */,
 				0EA5887D223E285100080EA8 /* AppDelegate.h */,
 				0EA5887E223E285100080EA8 /* AppDelegate.m */,
 				0EA58880223E285100080EA8 /* ViewController.h */,
@@ -195,6 +226,16 @@
 				0E0F020222412382006BC3A9 /* MLChartConst.m */,
 				48F0DFCD224B25B400E6D4F0 /* NormModel.h */,
 				48F0DFCE224B25B400E6D4F0 /* NormModel.m */,
+				48ACD716224C78550019EA4E /* CommonModel.h */,
+				48ACD717224C78550019EA4E /* CommonModel.m */,
+				48ACD719224C96CC0019EA4E /* Series.h */,
+				48ACD71A224C96CC0019EA4E /* Series.m */,
+				48ACD71C224C996D0019EA4E /* YAxis.h */,
+				48ACD71D224C996D0019EA4E /* YAxis.m */,
+				48ACD71F224CADCD0019EA4E /* ChartModel.h */,
+				48ACD720224CADCD0019EA4E /* ChartModel.m */,
+				48ACD722224CBAAC0019EA4E /* MLLineChartStyle.h */,
+				48ACD723224CBAAC0019EA4E /* MLLineChartStyle.m */,
 			);
 			path = ML_K_Demo;
 			sourceTree = "<group>";
@@ -228,6 +269,23 @@
 				48A240E622422D4100E92BB9 /* KDJ介绍.md */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		48ACD725224CC46C0019EA4E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				48ACD726224CC49C0019EA4E /* MLLineModel.h */,
+				48ACD727224CC49C0019EA4E /* MLLineModel.m */,
+				48ACD729224CC4B40019EA4E /* MLCandleModel.h */,
+				48ACD72A224CC4B40019EA4E /* MLCandleModel.m */,
+				48ACD72C224CC4C30019EA4E /* MLColumnModel.h */,
+				48ACD72D224CC4C30019EA4E /* MLColumnModel.m */,
+				48ACD72F224CC4D00019EA4E /* MLBarModel.h */,
+				48ACD730224CC4D00019EA4E /* MLBarModel.m */,
+				48ACD732224CC4E10019EA4E /* MLRoundModel.h */,
+				48ACD733224CC4E10019EA4E /* MLRoundModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,21 +426,31 @@
 			files = (
 				0EA58882223E285100080EA8 /* ViewController.m in Sources */,
 				0EA5888D223E285900080EA8 /* main.m in Sources */,
+				48ACD71B224C96CC0019EA4E /* Series.m in Sources */,
+				48ACD72B224CC4B40019EA4E /* MLCandleModel.m in Sources */,
 				488A3E69223F7F440019EBD4 /* ChartItem.m in Sources */,
 				0EA588BA223E337F00080EA8 /* LineChartView.m in Sources */,
+				48ACD72E224CC4C30019EA4E /* MLColumnModel.m in Sources */,
 				0EA588C3223E700900080EA8 /* MLTextLayer.m in Sources */,
 				0EA588B7223E333900080EA8 /* TickerTopView.m in Sources */,
 				488A3E6C223F962D0019EBD4 /* ChartAlgorithm.m in Sources */,
+				48ACD71E224C996D0019EA4E /* YAxis.m in Sources */,
 				48F0DFCF224B25B400E6D4F0 /* NormModel.m in Sources */,
+				48ACD728224CC49C0019EA4E /* MLLineModel.m in Sources */,
 				0EA588B4223E314400080EA8 /* ChartCustomViewController.m in Sources */,
 				488A3E66223F656C0019EBD4 /* UIView+MLExtesionFrame.m in Sources */,
 				0EA588C0223E6FD800080EA8 /* MLShapeLayer.m in Sources */,
+				48ACD731224CC4D00019EA4E /* MLBarModel.m in Sources */,
+				48ACD734224CC4E10019EA4E /* MLRoundModel.m in Sources */,
 				0EA5887F223E285100080EA8 /* AppDelegate.m in Sources */,
 				0E0F020322412382006BC3A9 /* MLChartConst.m in Sources */,
 				0EA588C6223E725E00080EA8 /* Section.m in Sources */,
 				488A3E75223F9E270019EBD4 /* MLChartAlgorithm.m in Sources */,
+				48ACD724224CBAAC0019EA4E /* MLLineChartStyle.m in Sources */,
 				0EA588BD223E341300080EA8 /* ToolBarView.m in Sources */,
+				48ACD718224C78550019EA4E /* CommonModel.m in Sources */,
 				0EA588B1223E2F5800080EA8 /* MainViewController.m in Sources */,
+				48ACD721224CADCD0019EA4E /* ChartModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

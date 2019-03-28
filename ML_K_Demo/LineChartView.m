@@ -11,6 +11,7 @@
 #import "MLShapeLayer.h"
 #import "Section.h"
 #import "ChartItem.h"
+#import "CommonModel.h"
 
 
 static dispatch_group_t group_t;
@@ -118,9 +119,22 @@ inline static void initDispatch()
     if (res) {
         
         // 待绘制的x坐标标签（数组中防暑的是i）
+        NSMutableArray<XAxisToDraw *>* xAxisToDraws = [NSMutableArray array];
         
-        // 绘制每个分区
+        // 绘制每个分区        (section区对象， index保留小数位)
         [self buildSection:^(Section *section, int index) {
+            
+            
+            int decimal = 2;
+            // 获取各个分区保留位数 如果代理没有设置那么就默认保留两位小数
+            if ([self.delegate respondsToSelector:@selector(lineChart:decimalAt:)]) {
+               decimal = [self.delegate lineChart:self decimalAt:index];
+            }
+            // 设置小数点保留参数
+            section.decimal = decimal;
+            
+            // 初始化Y轴数据
+//            self
             
             
         }];
@@ -134,6 +148,30 @@ inline static void initDispatch()
     
    
 }
+
+
+
+
+/**
+ 初始化分区上各个线的Y轴
+
+ @param section section description
+ */
+- (void)initYAxis:(Section *)section
+{
+    
+    if (section.series.count > 0) {
+        // 建立分区没每条线的坐标系
+    
+    }
+    
+    
+   
+}
+
+
+
+
 
 
 

@@ -69,6 +69,18 @@ typedef NS_ENUM(NSInteger, ChartViewScrollPosition) {
 - (ChartItem *)lineChart:(LineChartView *)chart vlaueForPointAtIndex:(int)index;
 
 
+/**
+ 配置各个分区小数保留位数
+
+ @param chart chart description
+ @param section section description
+ @return return value description
+ */
+- (int)lineChart:(LineChartView *)chart decimalAt:(int)section;
+
+
+
+
 
 @end
 
