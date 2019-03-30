@@ -24,6 +24,9 @@
 		0EA588C0223E6FD800080EA8 /* MLShapeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA588BF223E6FD800080EA8 /* MLShapeLayer.m */; };
 		0EA588C3223E700900080EA8 /* MLTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA588C2223E700900080EA8 /* MLTextLayer.m */; };
 		0EA588C6223E725E00080EA8 /* Section.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA588C5223E725E00080EA8 /* Section.m */; };
+		0EF348BE224F597F003F6C58 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF348BD224F597F003F6C58 /* NSString+Extension.m */; };
+		0EF348C1224F5BDD003F6C58 /* UIColor+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF348C0224F5BDD003F6C58 /* UIColor+Extension.m */; };
+		0EF348C4224F6B6F003F6C58 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF348C3224F6B6F003F6C58 /* NSDate+Extension.m */; };
 		488A3E66223F656C0019EBD4 /* UIView+MLExtesionFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 488A3E65223F656C0019EBD4 /* UIView+MLExtesionFrame.m */; };
 		488A3E69223F7F440019EBD4 /* ChartItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 488A3E68223F7F440019EBD4 /* ChartItem.m */; };
 		488A3E6C223F962D0019EBD4 /* ChartAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 488A3E6B223F962D0019EBD4 /* ChartAlgorithm.m */; };
@@ -99,6 +102,12 @@
 		0EA588C2223E700900080EA8 /* MLTextLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLTextLayer.m; sourceTree = "<group>"; };
 		0EA588C4223E725E00080EA8 /* Section.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Section.h; sourceTree = "<group>"; };
 		0EA588C5223E725E00080EA8 /* Section.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Section.m; sourceTree = "<group>"; };
+		0EF348BC224F597F003F6C58 /* NSString+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
+		0EF348BD224F597F003F6C58 /* NSString+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
+		0EF348BF224F5BDD003F6C58 /* UIColor+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extension.h"; sourceTree = "<group>"; };
+		0EF348C0224F5BDD003F6C58 /* UIColor+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extension.m"; sourceTree = "<group>"; };
+		0EF348C2224F6B6F003F6C58 /* NSDate+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
+		0EF348C3224F6B6F003F6C58 /* NSDate+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
 		488A3E64223F656C0019EBD4 /* UIView+MLExtesionFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+MLExtesionFrame.h"; sourceTree = "<group>"; };
 		488A3E65223F656C0019EBD4 /* UIView+MLExtesionFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MLExtesionFrame.m"; sourceTree = "<group>"; };
 		488A3E67223F7F440019EBD4 /* ChartItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChartItem.h; sourceTree = "<group>"; };
@@ -187,6 +196,7 @@
 		0EA5887C223E285100080EA8 /* ML_K_Demo */ = {
 			isa = PBXGroup;
 			children = (
+				0EF348BB224F595F003F6C58 /* Category_Chart */,
 				48ACD725224CC46C0019EA4E /* Model */,
 				0EA5887D223E285100080EA8 /* AppDelegate.h */,
 				0EA5887E223E285100080EA8 /* AppDelegate.m */,
@@ -256,6 +266,19 @@
 				0EA588A3223E285A00080EA8 /* Info.plist */,
 			);
 			path = ML_K_DemoUITests;
+			sourceTree = "<group>";
+		};
+		0EF348BB224F595F003F6C58 /* Category_Chart */ = {
+			isa = PBXGroup;
+			children = (
+				0EF348BC224F597F003F6C58 /* NSString+Extension.h */,
+				0EF348BD224F597F003F6C58 /* NSString+Extension.m */,
+				0EF348BF224F5BDD003F6C58 /* UIColor+Extension.h */,
+				0EF348C0224F5BDD003F6C58 /* UIColor+Extension.m */,
+				0EF348C2224F6B6F003F6C58 /* NSDate+Extension.h */,
+				0EF348C3224F6B6F003F6C58 /* NSDate+Extension.m */,
+			);
+			path = Category_Chart;
 			sourceTree = "<group>";
 		};
 		48A240E022422D4100E92BB9 /* Resource */ = {
@@ -432,6 +455,7 @@
 				0EA588BA223E337F00080EA8 /* LineChartView.m in Sources */,
 				48ACD72E224CC4C30019EA4E /* MLColumnModel.m in Sources */,
 				0EA588C3223E700900080EA8 /* MLTextLayer.m in Sources */,
+				0EF348C1224F5BDD003F6C58 /* UIColor+Extension.m in Sources */,
 				0EA588B7223E333900080EA8 /* TickerTopView.m in Sources */,
 				488A3E6C223F962D0019EBD4 /* ChartAlgorithm.m in Sources */,
 				48ACD71E224C996D0019EA4E /* YAxis.m in Sources */,
@@ -449,8 +473,10 @@
 				48ACD724224CBAAC0019EA4E /* MLLineChartStyle.m in Sources */,
 				0EA588BD223E341300080EA8 /* ToolBarView.m in Sources */,
 				48ACD718224C78550019EA4E /* CommonModel.m in Sources */,
+				0EF348C4224F6B6F003F6C58 /* NSDate+Extension.m in Sources */,
 				0EA588B1223E2F5800080EA8 /* MainViewController.m in Sources */,
 				48ACD721224CADCD0019EA4E /* ChartModel.m in Sources */,
+				0EF348BE224F597F003F6C58 /* NSString+Extension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -131,8 +131,19 @@ typedef NS_ENUM(NSInteger, SectionValueType){
  X轴参数
  */
 @property (nonatomic, strong) YAxis *xAxis;
+/**
+ 清空所有的子图层
+ */
+- (void)removeLayerView;
 
-
+/**
+ 建立Y轴的数值范围
+ 
+ @param startIndex 计算范围的开始数据点
+ @param endIndex 计算范围结束数据点
+ @param datas datas description
+ */
+- (void)buildTAxis:(int)startIndex endIndex:(int)endIndex datas:(NSArray <ChartItem *>*)datas;
 
 
 
