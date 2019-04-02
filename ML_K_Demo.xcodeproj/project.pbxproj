@@ -27,6 +27,7 @@
 		0EF348BE224F597F003F6C58 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF348BD224F597F003F6C58 /* NSString+Extension.m */; };
 		0EF348C1224F5BDD003F6C58 /* UIColor+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF348C0224F5BDD003F6C58 /* UIColor+Extension.m */; };
 		0EF348C4224F6B6F003F6C58 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF348C3224F6B6F003F6C58 /* NSDate+Extension.m */; };
+		482D14D92252FB8E0096BC3C /* MLTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 482D14D82252FB8E0096BC3C /* MLTools.m */; };
 		488A3E66223F656C0019EBD4 /* UIView+MLExtesionFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 488A3E65223F656C0019EBD4 /* UIView+MLExtesionFrame.m */; };
 		488A3E69223F7F440019EBD4 /* ChartItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 488A3E68223F7F440019EBD4 /* ChartItem.m */; };
 		488A3E6C223F962D0019EBD4 /* ChartAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 488A3E6B223F962D0019EBD4 /* ChartAlgorithm.m */; };
@@ -108,6 +109,8 @@
 		0EF348C0224F5BDD003F6C58 /* UIColor+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extension.m"; sourceTree = "<group>"; };
 		0EF348C2224F6B6F003F6C58 /* NSDate+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
 		0EF348C3224F6B6F003F6C58 /* NSDate+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
+		482D14D72252FB8E0096BC3C /* MLTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLTools.h; sourceTree = "<group>"; };
+		482D14D82252FB8E0096BC3C /* MLTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLTools.m; sourceTree = "<group>"; };
 		488A3E64223F656C0019EBD4 /* UIView+MLExtesionFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+MLExtesionFrame.h"; sourceTree = "<group>"; };
 		488A3E65223F656C0019EBD4 /* UIView+MLExtesionFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MLExtesionFrame.m"; sourceTree = "<group>"; };
 		488A3E67223F7F440019EBD4 /* ChartItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChartItem.h; sourceTree = "<group>"; };
@@ -277,6 +280,8 @@
 				0EF348C0224F5BDD003F6C58 /* UIColor+Extension.m */,
 				0EF348C2224F6B6F003F6C58 /* NSDate+Extension.h */,
 				0EF348C3224F6B6F003F6C58 /* NSDate+Extension.m */,
+				482D14D72252FB8E0096BC3C /* MLTools.h */,
+				482D14D82252FB8E0096BC3C /* MLTools.m */,
 			);
 			path = Category_Chart;
 			sourceTree = "<group>";
@@ -453,6 +458,7 @@
 				48ACD72B224CC4B40019EA4E /* MLCandleModel.m in Sources */,
 				488A3E69223F7F440019EBD4 /* ChartItem.m in Sources */,
 				0EA588BA223E337F00080EA8 /* LineChartView.m in Sources */,
+				482D14D92252FB8E0096BC3C /* MLTools.m in Sources */,
 				48ACD72E224CC4C30019EA4E /* MLColumnModel.m in Sources */,
 				0EA588C3223E700900080EA8 /* MLTextLayer.m in Sources */,
 				0EF348C1224F5BDD003F6C58 /* UIColor+Extension.m in Sources */,

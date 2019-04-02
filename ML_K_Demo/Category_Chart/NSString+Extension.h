@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
  @return return value description
  */
 - (CGSize)sizeWithConstrained:(UIFont *)font constraintRect:(CGSize)size;
+
+- (NSString *)subString:(int)def;
 @end
 
 NS_ASSUME_NONNULL_END
